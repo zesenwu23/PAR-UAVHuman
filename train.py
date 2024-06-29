@@ -7,12 +7,10 @@ import torch.nn as nn
 import os
 import os.path as osp
 import torchvision.transforms as T
-# import albumentations as A
-# from albumentations.pytorch import ToTensorV2
+
 import torchvision.transforms.functional as TF
 import sys
-# from balanced_loss import Loss
-# from augment_and_mix import augment_and_mix
+
 
 from uavhuman import UAVHuman
 
@@ -43,25 +41,6 @@ transforms_train = T.Compose([
         normalizer
         ])
 
-# transforms_train_A = A.Compose([
-#         A.Resize(width,height),
-#         A.PadIfNeeded(
-#                     min_height=height + 10,
-#                     min_width=width + 10,
-#                 ),
-#         A.RandomCrop(width,height),
-#         A.HorizontalFlip(p=0.5),
-#         A.ColorJitter(brightness=[1., 2.], saturation=[1., 2.]),
-#         A.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
-#         ToTensorV2()
-#         ])
-
-# transforms_test_A = A.Compose([
-#         A.Resize(width,height),
-#         A.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
-#         ToTensorV2()
-#         ])
-
 
 class_weight=[
         torch.tensor([1.,1.]),
@@ -72,14 +51,6 @@ class_weight=[
         torch.tensor([1.,1.,1.,1.,1.,1.,1.,1.,1.,1.]),
         torch.tensor([1.,1.,1.,1.])
     ]
-
-# class_weight[0] = 1 / torch.tensor([13966.,2217.])
-# class_weight[1] = 1 / torch.tensor([9677., 2098., 237., 1407., 1967., 797]).sqrt()
-# class_weight[2] = 1 / torch.tensor([6522., 2230., 2563., 2090., 2243., 535]).sqrt()
-# class_weight[3] = 1 / torch.tensor([733., 4384., 1175., 761., 774., 1914., 5346., 258., 316., 369., 153]).sqrt()
-# class_weight[4] = 1 / torch.tensor([3296., 12482., 405]).sqrt()
-# class_weight[5] = 1 / torch.tensor([25., 9706., 2723., 368., 251., 1350., 267., 96., 1204., 193.]).sqrt()
-# class_weight[6] = 1 / torch.tensor([77., 9395., 6039., 672]).sqrt()
 
 
 
@@ -216,8 +187,3 @@ model_large.to("cuda")
 # 多卡
 model_large = nn.DataParallel(model_large)
 train(model_large,50)
-
-# Base Conv
-# model = MultiConvnext2(class_list=class_list)
-# model.to("cuda")
-# train(model,50,48)
