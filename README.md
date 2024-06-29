@@ -1,3 +1,7 @@
+## Dataset
+We use [UAVHuman](https://github.com/sutdcv/UAV-Human) (attribute subset) to train and evaluate.
+
+
 #### Settings:
 
 1. Python version: `3.8`
@@ -10,21 +14,6 @@
 
 3. Other related packages are available at `requirements.txt`
 
-#### Before testing:
-
-You can directly load our model [model_best.pth](https://drive.google.com/drive/folders/1ZkSKgEyIr4Vj-OKNIplC2_CxERNQUbPV?usp=sharing) to get the reported result. 
-
-Our result:
-
-```
-acc_score gender: 0.8565789473684211
-acc_score backpack: 0.8220394736842105
-acc_score hat: 0.8396381578947368
-acc_score upper clothes color: 0.6435855263157895
-acc_score upper clothes shape: 0.8509868421052632
-acc_score lower clothes color: 0.6407894736842106
-acc_score lower clothes shape: 0.8858552631578948
-```
 
 #### Testing:
 
